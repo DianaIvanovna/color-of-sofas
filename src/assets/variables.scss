@@ -37,8 +37,19 @@ $background-color: #FFECF5;
   font-size: $size;
   line-height: $height;
 }
+
 @mixin fontDrukCy( $size, $height) {
   font-family: "Druk Text Wide Cyr Heavy";
   font-size: $size;
   line-height: $height;
+}
+
+@mixin adaptiveFont( $maxFont, $minFont, $addSize) {
+  font-size: calc( #{$minFont} + ( #{$addSize} * (100vw/1440)));
+  @media screen and (max-width: 768px) {
+    font-size: calc(#{$minFont} + ((#{$addSize} + #{$addSize}*0.7) * ((100vw - 320px)/1440)));
+  }
+  @media screen and (min-width: 1440px){
+    font-size: #{$maxFont};
+  }
 }

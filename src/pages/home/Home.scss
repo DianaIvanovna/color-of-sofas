@@ -27,7 +27,8 @@
 }
 
 .home__title {
-  @include fontDrukCy(96px,112px);
+  @include fontDrukCy(96px,108%);
+  @include adaptiveFont(96px, 26px, 70);
 
   margin: 0;
   text-transform: uppercase;
