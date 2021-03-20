@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from "../../component/Header/Header";
+import Footer from "../../component/Footer/Footer";
 import "./Home.scss";
 
 export default class Home extends Component {
@@ -7,9 +8,10 @@ export default class Home extends Component {
     return (
       <div className="home">
         <Header/>
-        {/* <div className="main">
+        <div className="main">
         main
-        </div> */}
+        </div>
+        <Footer/>
       </div>
     )
   };

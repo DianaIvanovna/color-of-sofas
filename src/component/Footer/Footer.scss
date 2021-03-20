@@ -1,0 +1,78 @@
+@import "../../assets/variables.scss";
+
+.footer {
+  @include margins;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  width: 100%;
+  border: 1px solid black;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 1040px) {
+    flex-direction: column;
+    padding-bottom: 37px;
+  }
+}
+
+.footer__nav {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 1040px) {
+    flex-direction: column;
+  }
+}
+
+.footer__title {
+  @include fontValueMontserrat(normal, 400, 18px, 22px);
+
+  margin: 0;
+  margin-right: 20px;
+  color: $text-color;
+
+  @media screen and (max-width: 1040px) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    @include fontValueMontserrat(normal, 400, 14px, 17px);
+  }
+}
+
+.footer__signature {
+  @include fontValueMontserrat(normal, normal, 18px, 22px);
+
+  margin: 0;
+  color: $text-color;
+
+  @media screen and (max-width: 600px) {
+    width: 217px;
+    text-align: center;
+    @include fontValueMontserrat(normal, 400, 14px, 17px);
+  }
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 1040px) {
+    margin-bottom: 20px;
+  }
+}
+
+.footer__link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid $border-color;
+  border-radius: 100%;
+  box-sizing: border-box;
+  margin-right: 15px;
+}

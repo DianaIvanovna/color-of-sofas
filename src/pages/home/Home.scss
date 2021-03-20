@@ -1,9 +1,11 @@
+@import "../../assets/variables.scss";
+
 .home {
   height: 100vh;
   display:flex;
   flex-direction: column;
 
-  background: #FFECF5;
+  background: $background-color;
 }
 
 .main {
