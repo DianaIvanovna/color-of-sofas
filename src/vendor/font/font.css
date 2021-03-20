@@ -1,1 +1,6 @@
 @import url("./montserrat/stylesheet.css");
+
+@font-face {
+  font-family: 'Druk Text Wide Cyr Heavy';
+  src: url('Druk Text Wide Cyr Heavy.otf');
+}

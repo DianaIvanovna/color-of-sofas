@@ -36,3 +36,8 @@ $background-color: #FFECF5;
   font-size: $size;
   line-height: $height;
 }
+@mixin fontValueDrukCy( $size, $height) {
+  font-family: "Druk Text Wide Cyr Heavy";
+  font-size: $size;
+  line-height: $height;
+}

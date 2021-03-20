@@ -15,3 +15,13 @@
   border: 1px solid blue;
   box-sizing: border-box;
 }
+
+.home__title {
+  @include fontValueDrukCy(96px,112px);
+
+text-transform: uppercase;
+
+/* /Текст */
+
+color: #1E1E1E;
+}

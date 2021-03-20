@@ -9,7 +9,13 @@ export default class Home extends Component {
       <div className="home">
         <Header/>
         <div className="main">
-        main
+
+          <div className="home__title-container">
+            <h1 className="home__title">
+            найди свой
+            </h1>
+          </div>
+
         </div>
         <Footer/>
       </div>
