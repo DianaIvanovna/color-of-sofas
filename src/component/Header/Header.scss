@@ -1,0 +1,33 @@
+@import "../../assets/variables.scss";
+
+.header {
+  @include margins;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 30px;
+  width: 100%;
+  border: 1px solid red;
+
+  box-sizing: border-box;
+
+  @media screen and (max-width: 600px) {
+    padding-top: 20px;
+  }
+
+}
+
+.header__logo {
+  @media screen and (max-width: 600px) {
+    width: 83px;
+    height: 26px;
+  }
+}
+
+.header__logo_hyip {
+  @media screen and (max-width: 600px) {
+    width: 63px;
+    height: 18px;
+  }
+}
