@@ -1,27 +1,93 @@
 @import "../../assets/variables.scss";
 
 .home {
+  @include margins;
+
+  width: 100%;
   height: 100vh;
   display:flex;
   flex-direction: column;
-
-  background: $background-color;
+  box-sizing: border-box;
 }
 
-.main {
+.home__container {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   flex-grow: 1;
   border: 1px solid blue;
   box-sizing: border-box;
 }
 
+.home__img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .home__title {
-  @include fontValueDrukCy(96px,112px);
+  @include fontDrukCy(96px,112px);
 
-text-transform: uppercase;
+  margin: 0;
+  text-transform: uppercase;
+  color: $text-color;
+}
 
-/* /Текст */
+.home__title_reverse {
+  text-align: end;
+}
 
-color: #1E1E1E;
+.home__title_attention {
+  color: $text-color-attention;
+}
+
+.home__description {
+  @include fontValueMontserrat(normal, 300, 22px, 30px);
+
+  margin: 30px 0;
+  max-width: 606.59px;
+  color: $text-color;
+}
+
+.home__button {
+  @include fontDrukCy(18px, 20px);
+
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 54px;
+  border: 3px solid $border-color;
+  border-radius: 100px;
+  box-sizing: border-box;
+  background: none;
+
+  text-align: center;
+  text-transform: uppercase;
+  color: $text-color;
+}
+
+.home__swipe-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto 50px;
+}
+
+.home__swipe-link {
+  @include fontValueMontserrat(normal, bold, 24px, 29px);
+
+  margin: 0 10px;
+  text-transform: uppercase;
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.home__swipe-space {
+  @include fontValueMontserrat(normal, bold, 40px, 50px);
+
+  position: relative;
+  color: $text-color;
 }
