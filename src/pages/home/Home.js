@@ -8,6 +8,19 @@ import sofa from "../../img/home-sofa.png";
 
 export default class Home extends Component {
   render(){
+    let homeDescriptionBlock
+    if (window.innerWidth > 600){
+      homeDescriptionBlock = <p className="home__description">
+      Познакомься поближе с диваном из твоего города
+      с помощью онлайн-дейтинга мягкой мебели,
+      который придумали <span className="home__description-attention">Хайп</span> и <span className="home__description-attention">Цвет</span> Диванов.
+      Любовь с первого свайпа — теперь реальность! ❤️
+    </p>
+    } else {
+      homeDescriptionBlock = <p className="home__description">
+      Познакомься поближе с диваном мечты с помощью онлайн-дейтинга от <span className="home__description-attention">Цвета Диванов</span>. Любовь с первого свайпа — теперь реальность! ❤️
+      </p>
+    }
     return (
       <div className="home">
         <Header/>
@@ -27,16 +40,11 @@ export default class Home extends Component {
             <p className="home__title"><span className="home__title_attention">диван</span></p>
           </div>
 
-          <p className="home__description">
-            Познакомься поближе с диваном из твоего города
-            с помощью онлайн-дейтинга мягкой мебели,
-            который придумали Хайп и Цвет Диванов.
-            Любовь с первого свайпа — теперь реальность! ❤️
-          </p>
+          {homeDescriptionBlock}
 
           <button className="home__button">Найти свой диван</button>
 
-          {/* <img src={sofa} alt="sofa" className="home__img" width={693} height={649}></img> */}
+          <img src={sofa} alt="sofa" className="home__img" width={693} height={649}></img>
 
         </div>
         <Footer/>
