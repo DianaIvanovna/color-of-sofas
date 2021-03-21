@@ -3,21 +3,103 @@
 .home {
   @include margins;
 
+  position: relative;
   width: 100%;
   min-height: 100vh;
   display:flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    display: block;
+    background-image: url("../../img/background-sequins.png");
+    background-size: contain;
+    width: 50%;
+    height: 50%;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: 1024px) {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+    }
+  }
+  &::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+    background-image: url("../../img/background-sequins-2.png");
+    background-size: contain;
+    width: 50%;
+    height: 50%;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: 1024px) {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+    }
+  }
+}
+
+.home__back-img {
+  position: absolute;
+
+
+  &:nth-child(1){
+    top: 109px;
+    left: 81px;
+  }
+
+  &:nth-child(2){
+    bottom: 108px;
+    left: 40%;
+  }
+
+  &:nth-child(3){
+    top: 111px;
+    right: 157px;
+  }
+
+  &:nth-child(4){
+    top: 39px;
+    left: 320px;
+  }
+
+  &:nth-child(5){
+    transform: rotate(-90deg);
+    bottom: -60px;
+    left: 320px;
+  }
+
+  &:nth-child(6){
+    transform: rotate(-90deg);
+    top: 129px;
+    right: -95px;
+    @media screen and (min-width:1441px){
+      position: fixed;
+    }
+  }
+
 }
 
 .home__container {
+  z-index: 2;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
   padding: 50px 0 100px;
-  border: 1px solid blue;
   box-sizing: border-box;
 
   @media screen and (max-width: 1040px){
@@ -45,13 +127,75 @@
   width: 100%;
 }
 
+.home__title-emoji {
+  position: absolute;
+  z-index: 2;
+}
+
+.home__title-emoji_sofa {
+  bottom: 38%;
+  right: 2%;
+  @media screen and (max-width: 1200px) {
+    bottom: 30%;
+    right: 0%;
+  }
+  @media screen and (max-width: 1040px) {
+    display: none;
+  }
+}
+
 .home__title {
   @include fontDrukCy(96px,108%);
   @include adaptiveFont(96px, 26px, 70);
 
+  position: relative;
   margin: 0;
   text-transform: uppercase;
   color: $text-color;
+
+  &:nth-child(1){
+    .home__title-emoji {
+      top: -45px;
+      left: 35%;
+      @media screen and (max-width: 1040px) {
+        display: none;
+      }
+    }
+  }
+  &:nth-child(2){
+    .home__title-emoji {
+      width: calc( 26px + ( 70 * (100vw/1440)*1.5));
+      max-width: 123px;
+      top: -20px;
+      left: 10%;
+      @media screen and (max-width: 1040px) {
+        top: -210%;
+        left: 40%;
+      }
+    }
+  }
+
+  &:nth-child(3){
+    .home__title-emoji {
+      &:first-of-type {
+        top: -40px;
+        left: -40px;
+        @media screen and (max-width: 1040px) {
+          display: none;
+        }
+      }
+      &:last-of-type {
+        width: calc( 26px + ( 70 * (100vw/1440)*1.5));
+        max-width: 123px;
+        top: 15px;
+        left: 40%;
+        @media screen and (max-width: 1040px) {
+
+        }
+      }
+    }
+  }
+
 }
 
 .home__title_reverse {

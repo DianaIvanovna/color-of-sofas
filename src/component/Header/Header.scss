@@ -3,12 +3,13 @@
 .header {
   @include margins;
 
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   padding-top: 30px;
   width: 100%;
-  border: 1px solid red;
 
   box-sizing: border-box;
 
