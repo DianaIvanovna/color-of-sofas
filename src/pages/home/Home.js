@@ -14,6 +14,13 @@ import boy from "../../img/emoji-boy.png";
 import stars from "../../img/emoji-stars.png";
 
 export default class Home extends Component {
+
+  goSetting = () => {
+    this.props.history.push({
+      pathname: '/settings'
+    })
+  }
+
   render(){
     let backgroundImg =
       <div>
@@ -68,7 +75,7 @@ export default class Home extends Component {
           {/* вывод описания */}
           {homeDescriptionBlock}
           {/* вывод описания */}
-          <button className="home__button">Найти свой диван</button>
+          <button className="home__button" onClick = {this.goSetting}>Найти свой диван</button>
           <img src={sofa} alt="sofa" className="home__img" width={693} height={649}></img>
           <img src={head2} alt="emoji head" className="home__title-emoji home__title-emoji_sofa"></img>
         </div>

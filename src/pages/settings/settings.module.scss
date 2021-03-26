@@ -1,0 +1,210 @@
+@import "../../assets/variables.scss";
+
+.settings {
+  @include margins;
+  width: 100%;
+  max-width: 780px;
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid red;
+  overflow: hidden;
+}
+
+.title {
+  @include fontDrukCy( 48px, 58px);
+  font-weight: 999;
+  text-align: center;
+  text-transform: uppercase;
+  color: $text-color;
+  margin: 62px 0 20px;
+
+}
+
+.subtitle {
+  @include fontValueMontserrat(normal, 300, 28px, 38px);
+  text-align: center;
+  color: $text-color;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 20px 35px;
+}
+
+.form__image{
+  object-fit: contain;
+  margin: 0 20px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.input__agree {
+  @include fontValueMontserrat(normal, normal, 14px, 17px);
+  color: $text-color;
+  opacity: 0.6;
+}
+
+// СТИЛИ ЧЕКБОКС
+
+
+
+
+
+// СТИЛИ ДЛЯ РАДИОКНОПКИ
+.radioButton {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	margin: 10px 0 0 7px;
+}
+.radioButton + label {
+	position: relative;
+	padding: 0 0 0 62px;
+	cursor: pointer;
+}
+.radioButton + label:before {
+	content: '';
+	position: absolute;
+	top: -11px;
+	left: 0;
+	width: 42px;
+	height: 42px;
+	box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+	border-radius: 50%;
+	background: #FFF;
+}
+.radioButton + label:after {
+	content: '';
+	position: absolute;
+	top: -3px;
+	left: 8px;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: $border-attention;
+	opacity: 0;
+	transition: .2s;
+}
+.radioButton:checked + label:after {
+	opacity: 1;
+}
+
+.caption {
+  position: relative;
+  z-index: 2;
+  @include fontDrukCy( 30px, 36px);
+  font-weight: 999;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $text-color;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  &::before, &::after {
+    content: "";
+    vertical-align: middle;
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #CF78ED;
+    position: relative;
+  }
+  &::before {
+      margin-left: -100%;
+      left: -14px;
+      margin-right: 65px;
+  }
+  &::after {
+      margin-right: -100%;
+      right: -14px;
+      margin-left: 65px;
+  }
+}
+
+.caption__back {
+  position: absolute;
+  z-index: -1;
+  width: 200px;
+  height: 70px;
+  top: -10px;
+  left: calc(50% - 100px);
+}
+
+.text {
+  @include fontValueMontserrat(normal, 300, 22px, 30px);
+
+  text-align: center;
+  color: #1E1E1E;
+  margin: 40px 0;
+}
+
+.download {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.download__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.download__title{
+  @include fontDrukCy( 22px, 26px);
+  text-align: center;
+  color: $text-color;
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+.icons {
+  display: flex;
+  .download__icon:first-of-type{
+    margin-right: 20px;
+  }
+}
+
+.download__text {
+  @include fontValueMontserrat(normal, 300, 22px, 30px);
+  text-align: center;
+  color: $text-color;
+  margin: 0;
+}
+
+.download__icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+.button {
+  @include button;
+
+  border: none;
+  background: $attention;
+  color: #FFFFFF;
+}
