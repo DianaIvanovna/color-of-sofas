@@ -59,8 +59,10 @@ export default class Settings extends Component {
         </div>
         <button className={classes.button}>Найти свой диван</button>
 
-        <input className={classes.input__checkbox} type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm"></input>
-        <label htmlFor="agreeInput" className={classes.input__agree}>Я согласен с пользовательским соглашением и с обработкой персональной данных </label>
+        <div className={classes.input__checkbox}>
+          <input type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm"></input>
+          <label htmlFor="agreeInput" className={classes.input__agree}>Я согласен с пользовательским соглашением и с обработкой персональной данных </label>
+        </div>
 
       </section>
     )

@@ -3,7 +3,7 @@
 .settings {
   @include margins;
   width: 100%;
-  max-width: 780px;
+  max-width: 1020px;
   height: 100%;
   display:flex;
   flex-direction: column;
@@ -21,6 +21,11 @@
   color: $text-color;
   margin: 62px 0 20px;
 
+
+  @media screen and (max-width:650px){
+    @include fontDrukCy( 28px, 34px);
+    margin: 20px 0 15px;
+  }
 }
 
 .subtitle {
@@ -28,6 +33,10 @@
   text-align: center;
   color: $text-color;
   margin: 0;
+
+  @media screen and (max-width:650px){
+    @include fontValueMontserrat(normal, 300, 20px, 26px);
+  }
 }
 
 .form {
@@ -36,6 +45,11 @@
   justify-content: space-around;
   width: 100%;
   margin: 20px 35px;
+
+  @media screen and (max-width:650px){
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .form__image{
@@ -46,6 +60,16 @@
 .input {
   display: flex;
   align-items: center;
+
+  @media screen and (max-width:650px){
+    width: max-content;
+
+    &:first-of-type{
+      .form__image {
+        order: 3;
+      }
+    }
+  }
 }
 
 .input__agree {
@@ -53,12 +77,6 @@
   color: $text-color;
   opacity: 0.6;
 }
-
-// СТИЛИ ЧЕКБОКС
-
-
-
-
 
 // СТИЛИ ДЛЯ РАДИОКНОПКИ
 .radioButton {
@@ -71,6 +89,9 @@
 	position: relative;
 	padding: 0 0 0 62px;
 	cursor: pointer;
+  @media screen and (max-width:650px){
+    padding: 0 0 0 44px;
+  }
 }
 .radioButton + label:before {
 	content: '';
@@ -82,6 +103,11 @@
 	box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
 	border-radius: 50%;
 	background: #FFF;
+  @media screen and (max-width:650px){
+    top: -6px;
+    width: 30px;
+    height: 30px;
+  }
 }
 .radioButton + label:after {
 	content: '';
@@ -94,19 +120,95 @@
 	background: $border-attention;
 	opacity: 0;
 	transition: .2s;
+  @media screen and (max-width:650px){
+    top: 2px;
+	  left: 8px;
+    width: 14px;
+    height: 14px;
+  }
 }
 .radioButton:checked + label:after {
 	opacity: 1;
+}
+
+// СТИЛИ ЧЕКБОКС
+.input__checkbox {
+  position: relative;
+  margin: 20px 0px;
+  text-align: center;
+
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    margin: 10px 0 0 7px;
+  }
+
+  input + label {
+    position: relative;
+    padding: 0 0 0 28px;
+    cursor: pointer;
+  }
+
+  input:checked + label:before,
+  input:not(:checked) + label:before{
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 18px;
+      height: 18px;
+      border: 2px solid $border-color;
+      background-color: #ffffff;
+      margin-right: 10px;
+      box-sizing: border-box;
+  }
+
+  input:checked + label:before,
+  input:not(:checked) + label:before {
+      border-radius: 4px;
+  }
+
+  input:checked + label:after,
+  input:not(:checked) + label:after {
+      content: "";
+      position: absolute;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+  }
+
+  input:checked + label:after,
+  input:not(:checked) + label:after {
+      left: 3px;
+      top: 4px;
+      width: 10px;
+      height: 5px;
+      border-radius: 1px;
+      border-left: 2px solid $border-color;
+      border-bottom: 2px solid $border-color;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  }
+
+  input:not(:checked) + label:after {
+      opacity: 0;
+  }
+
+  input:checked + label:after {
+      opacity: 1;
+  }
 }
 
 .caption {
   position: relative;
   z-index: 2;
   @include fontDrukCy( 30px, 36px);
-  font-weight: 999;
-  font-size: 30px;
-  line-height: 36px;
-  text-align: center;
   text-transform: uppercase;
   color: $text-color;
 
@@ -132,6 +234,13 @@
       right: -14px;
       margin-left: 65px;
   }
+
+  @media screen and (max-width:650px){
+    @include fontDrukCy( 22px, 26px);
+    &::before, &::after {
+      display: none;
+    }
+  }
 }
 
 .caption__back {
@@ -141,6 +250,10 @@
   height: 70px;
   top: -10px;
   left: calc(50% - 100px);
+
+  @media screen and (max-width:650px){
+    top: -70%;
+  }
 }
 
 .text {
@@ -149,6 +262,12 @@
   text-align: center;
   color: #1E1E1E;
   margin: 40px 0;
+
+  @media screen and (max-width:650px){
+    @include fontValueMontserrat(normal, 300, 16px, 22px);
+
+    margin: 30px 0;
+  }
 }
 
 .download {
@@ -157,12 +276,22 @@
   align-items: flex-start;
   justify-content: space-around;
   margin-bottom: 40px;
+
+  @media screen and (max-width:650px){
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+  }
 }
 
 .download__item {
   display: flex;
   flex-direction: column;
-  align-items: center
+  align-items: center;
+
+  @media screen and (max-width:650px){
+    margin-bottom: 20px;
+  }
 }
 
 .download__title{
@@ -171,12 +300,22 @@
   color: $text-color;
   margin: 0;
   margin-bottom: 25px;
+
+  @media screen and (max-width:650px){
+    @include fontDrukCy( 18px, 22px);
+    margin-bottom: 17px;
+  }
+
 }
 
 .icons {
   display: flex;
   .download__icon:first-of-type{
     margin-right: 20px;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -185,6 +324,12 @@
   text-align: center;
   color: $text-color;
   margin: 0;
+
+  @media screen and (max-width:650px){
+    @include fontValueMontserrat(normal, 300, 16px, 22px);
+
+    margin-bottom: 20px;
+  }
 }
 
 .download__icon{
