@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import Header from "../../component/Header/Header";
-import Footer from "../../component/Footer/Footer";
 import "./Home.scss";
 import emojiHandLeft from "../../img/emoji-hand-left.png";
 import emojiHandRight from "../../img/emoji-hand-right.png";
@@ -43,7 +41,6 @@ export default class Home extends Component {
     return (
       <div className="home">
         {/* картинки для фона */ window.innerWidth > 1040?backgroundImg:null }
-        <Header/>
         <div className="home__container">
           <div className="home__swipe-container">
             <img src={emojiHandLeft} alt="emoji hand left" className="home__emoji" width={52} height={52}></img>
@@ -75,7 +72,6 @@ export default class Home extends Component {
           <img src={sofa} alt="sofa" className="home__img" width={693} height={649}></img>
           <img src={head2} alt="emoji head" className="home__title-emoji home__title-emoji_sofa"></img>
         </div>
-        <Footer/>
       </div>
     )
   };
