@@ -1,17 +1,40 @@
 import React, {Component} from 'react';
 import classes from './settings.module.scss';
+import UploadPhoto from "../../component/UploadPhoto/UploadPhoto";
+
 import imageMan from "../../img/settings/man.png";
 import imageGirl from "../../img/settings/girl.png";
 import backTitle from "../../img/settings/back-action.svg";
 import vk from "../../img/vk.svg";
 import fb from "../../img/fb.svg";
-import plus from "../../img/plus.svg";
 
 
 export default class Settings extends Component {
+  state = {
+    user: {
+      gender: null,
+      photo: null,
+      interests: [],
+      characteristicsOfSofa: []
+    }
+  }
+
+  addPhoto = (src)=>{
+    this.setState({
+      user: {
+        photo: {src}
+      }
+    })
+    console.log(this.state.user.photo);
+  }
 
   submitHandler = (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    console.log('!');
+  }
+
+  loginHandler = () => {
+    console.log('clicke!');
   }
 
   render(){
@@ -50,14 +73,9 @@ export default class Settings extends Component {
             </div>
           </div>
           <p className={classes.download__text}>или</p>
-          <div className={classes.download__item}>
-            <p className={classes.download__title}>Загрузи фото</p>
-            <div className={classes.download__icon}>
-              <img width={24} height={24} src={plus} alt="icon add"></img>
-            </div>
-          </div>
+          <UploadPhoto uploadPhoto={this.addPhoto}/>
         </div>
-        <button className={classes.button}>Найти свой диван</button>
+        <button className={classes.button} type="submit" onClick={this.loginHandler}>Найти свой диван</button>
 
         <div className={classes.input__checkbox}>
           <input type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm"></input>

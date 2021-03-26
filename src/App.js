@@ -8,9 +8,6 @@ import Home from "./pages/home/Home";
 import Settings from "./pages/settings/settings";
 
 export default class App extends Component {
-  // state : {
-
-  // }
   linksHandler (link) {
     console.log('link', link);
   }
