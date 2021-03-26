@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import classes from './settings.module.scss';
 import UploadPhoto from "../../component/UploadPhoto/UploadPhoto";
+import AuthSocialNetwork from "../../component/authSocialNetwork/AuthSocialNetwork";
 
 import imageMan from "../../img/settings/man.png";
 import imageGirl from "../../img/settings/girl.png";
 import backTitle from "../../img/settings/back-action.svg";
-import vk from "../../img/vk.svg";
-import fb from "../../img/fb.svg";
-
 
 export default class Settings extends Component {
   state = {
@@ -16,7 +14,8 @@ export default class Settings extends Component {
       photo: null,
       interests: [],
       characteristicsOfSofa: []
-    }
+    },
+    formInvalid: false
   }
 
   addPhoto = (src)=>{
@@ -33,8 +32,29 @@ export default class Settings extends Component {
     console.log('!');
   }
 
-  loginHandler = () => {
-    console.log('clicke!');
+  loginHandler = (event) => {
+    const inputs = document.getElementsByName('gender');
+    let flagGender = false;
+    inputs.forEach((input)=>{
+      if (input.checked){
+        flagGender = true;
+        this.setState({
+          formInvalid: false
+        })
+      }
+    })
+    if (flagGender){
+      this.setState({
+        user: {
+          gender: document.forms.userForm.elements.gender.value
+        }
+      })
+      // переход на след страницу
+    } else {
+      this.setState({
+        formInvalid: true
+      })
+    }
   }
 
   render(){
@@ -45,7 +65,7 @@ export default class Settings extends Component {
         <form className={classes.form} onSubmit={this.submitHandler} id="userForm">
           <div className={classes.input}>
             <img className={classes.form__image} src={imageMan} alt="icon man" width={76} height={115}></img>
-            <input className={classes.radioButton}name="gender" type="radio" value="man" id="radioMan"/>
+            <input className={classes.radioButton} name="gender" type="radio" value="man" id="radioMan"/>
             <label htmlFor="radioMan">Мужчина</label>
           </div>
           <div className={classes.input}>
@@ -63,22 +83,24 @@ export default class Settings extends Component {
         <div className={classes.download}>
           <div className={classes.download__item}>
             <p className={classes.download__title}>Авторизуйся</p>
-            <div className={classes.icons}>
-              <div className={classes.download__icon}>
-                <img width={23} height={12} src={vk} alt="icon vk"></img>
-              </div>
-              <div className={classes.download__icon}>
-                <img width={12.5} height={23} src={fb} alt="icon facebook"></img>
-              </div>
-            </div>
+            <AuthSocialNetwork/>
           </div>
           <p className={classes.download__text}>или</p>
           <UploadPhoto uploadPhoto={this.addPhoto}/>
         </div>
-        <button className={classes.button} type="submit" onClick={this.loginHandler}>Найти свой диван</button>
+
+        <button
+          className={classes.button}
+          type="submit"
+          onClick={this.loginHandler}
+        >
+          <span>Найти свой диван</span>
+        </button>
+
+        {this.state.formInvalid?<p className={classes.input__error}>*Выбор пола обязателен</p>: null }
 
         <div className={classes.input__checkbox}>
-          <input type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm"></input>
+          <input type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm" defaultChecked></input>
           <label htmlFor="agreeInput" className={classes.input__agree}>Я согласен с пользовательским соглашением и с обработкой персональной данных </label>
         </div>
 
