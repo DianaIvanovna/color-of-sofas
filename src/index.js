@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 import './index.scss';
 import App from './App';
 
+// для подключения DevTools
 const composeEnhancers =
 typeof window === 'object' &&
 window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -18,7 +19,7 @@ const store = createStore(
   composeEnhancers(
     applyMiddleware(thunk)
   )
-  );
+);
 
 ReactDOM.render(
   <Provider store = {store}>

@@ -1,61 +1,37 @@
 import React, {Component} from 'react';
 import classes from './settings.module.scss';
+// redux
+import { connect } from 'react-redux';
+import { addGender, showError } from "../../store/actions/actionsUser";
+// component
 import UploadPhoto from "../../component/UploadPhoto/UploadPhoto";
 import AuthSocialNetwork from "../../component/authSocialNetwork/AuthSocialNetwork";
-import {  emojiHandLeft, emojiHandRight, sofa, backgroundSofa, backgroundSofa2, backgroundSofa3, backgroundHead, head,head2, girl, boy, stars} from "../../assets/images";
-
+// image
+import {  backgroundSofa, backgroundSofa2, backgroundSofa3, backgroundHead,} from "../../assets/images";
 import imageMan from "../../img/settings/man.png";
 import imageGirl from "../../img/settings/girl.png";
 import backTitle from "../../img/settings/back-action.svg";
-import { connect } from 'react-redux';
+
 
 class Settings extends Component {
-  state = {
-    user: {
-      gender: null,
-      photo: null,
-      interests: [],
-      characteristicsOfSofa: []
-    },
-    formInvalid: false
-  }
 
   addPhoto = (src)=>{
-    this.setState({
-      user: {
-        photo: {src}
-      }
-    })
-    console.log(this.state.user.photo);
+    // ДОБАВЬ REDUCE ПО ДОБАВЛЕНИЮ ФОТО
+    // this.setState({
+    //   user: {
+    //     photo: {src}
+    //   }
+    // })
+    // console.log(this.state.user.photo);
   }
 
   submitHandler = (event) => {
     event.preventDefault();
-    console.log('!');
-  }
-
-  loginHandler = (event) => {
-    const inputs = document.getElementsByName('gender');
-    let flagGender = false;
-    inputs.forEach((input)=>{
-      if (input.checked){
-        flagGender = true;
-        this.setState({
-          formInvalid: false
-        })
-      }
-    })
-    if (flagGender){
-      this.setState({
-        user: {
-          gender: document.forms.userForm.elements.gender.value
-        }
-      })
+    if (document.forms.userForm.elements.gender.value) {
+      this.props.addGender(document.forms.userForm.elements.gender.value)
       // переход на след страницу
     } else {
-      this.setState({
-        formInvalid: true
-      })
+      this.props.showError();
     }
   }
 
@@ -106,18 +82,16 @@ class Settings extends Component {
               <AuthSocialNetwork/>
             </div>
             <p className={classes.download__text}>или</p>
-            <UploadPhoto uploadPhoto={this.addPhoto}/>
+            {/* <UploadPhoto uploadPhoto={this.addPhoto}/> */}
           </div>
-
+          {this.props.errorForm?<p className={classes.input__error}>*Выбор пола обязателен</p>: null }
           <button
             className={classes.button}
             type="submit"
-            onClick={this.loginHandler}
+            onClick={this.submitHandler}
           >
             <span>Найти свой диван</span>
           </button>
-
-          {this.state.formInvalid?<p className={classes.input__error}>*Выбор пола обязателен</p>: null }
 
           <div className={classes.input__checkbox}>
             <input type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm" defaultChecked></input>
@@ -129,20 +103,20 @@ class Settings extends Component {
   };
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     gender: state.user.gender,
     photo: state.user.photo,
     interests: state.user.interests,
     sofaPropertys: state.user.sofaPropertys,
-    formInvalid: state.user.formInvalid
+    formInvalid: state.user.formInvalid,
+    errorForm: state.user.errorForm,
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-
-  }
+const mapDispatchToProps = {
+  addGender,
+  showError
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);

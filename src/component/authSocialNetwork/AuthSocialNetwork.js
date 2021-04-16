@@ -3,6 +3,8 @@ import classes from './AuthSocialNetwork.module.scss';
 import vk from "../../img/vk.svg";
 import fb from "../../img/fb.svg";
 
+// ВНЕСИ В КОНФИГУРАЦИЮ ESLINT VK AND FB
+
 const AuthSocialNetwork = props => {
   // функция загрузки фото с вк
   const authVk = () => {
@@ -22,6 +24,7 @@ const AuthSocialNetwork = props => {
             console.log(r.response[0].photo_max); // фото
           });
       } else {
+
       }
       // eslint-disable-next-line no-undef
     }, VK.access.PHOTOS)
