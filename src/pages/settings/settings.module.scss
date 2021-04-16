@@ -459,3 +459,9 @@
     margin: 0;
   }
 }
+
+.alert {
+  @include fontValueMontserrat(normal, 300, 16px, 18px);
+  margin: 20px 0;
+  color: $text-color-attention;
+}

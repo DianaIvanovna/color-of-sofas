@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import classes from './settings.module.scss';
 // redux
 import { connect } from 'react-redux';
-import { addGender, showError } from "../../store/actions/actionsUser";
+import { addGender, showAlert, hideAlert } from "../../store/actions/actionsUser";
 // component
 import UploadPhoto from "../../component/UploadPhoto/UploadPhoto";
 import AuthSocialNetwork from "../../component/authSocialNetwork/AuthSocialNetwork";
@@ -28,10 +28,11 @@ class Settings extends Component {
   submitHandler = (event) => {
     event.preventDefault();
     if (document.forms.userForm.elements.gender.value) {
-      this.props.addGender(document.forms.userForm.elements.gender.value)
+      this.props.addGender(document.forms.userForm.elements.gender.value);
+      this.props.hideAlert();
       // переход на след страницу
     } else {
-      this.props.showError();
+      this.props.showAlert('*Выбор пола обязателен');
     }
   }
 
@@ -75,16 +76,15 @@ class Settings extends Component {
           </h2>
           <p className={classes.text}>Это необязательно для заполнения, но представь
           как классно твоё фото будет смотреться рядом с диваном</p>
-
+          <p className={classes.alert}>{this.props.alertText}</p>
           <div className={classes.download}>
             <div className={classes.download__item}>
               <p className={classes.download__title}>Авторизуйся</p>
               <AuthSocialNetwork/>
             </div>
             <p className={classes.download__text}>или</p>
-            {/* <UploadPhoto uploadPhoto={this.addPhoto}/> */}
+            <UploadPhoto/>
           </div>
-          {this.props.errorForm?<p className={classes.input__error}>*Выбор пола обязателен</p>: null }
           <button
             className={classes.button}
             type="submit"
@@ -110,13 +110,14 @@ const mapStateToProps = state => {
     interests: state.user.interests,
     sofaPropertys: state.user.sofaPropertys,
     formInvalid: state.user.formInvalid,
-    errorForm: state.user.errorForm,
+    alertText: state.user.alertText,
   }
 }
 
 const mapDispatchToProps = {
   addGender,
-  showError
+  showAlert,
+  hideAlert
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);

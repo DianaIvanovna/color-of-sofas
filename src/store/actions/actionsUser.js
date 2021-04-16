@@ -1,4 +1,4 @@
-import { ADD_GENDER, ERROR_FORM } from "./actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, ADD_PHOTO } from "./actionTypes";
 
 export function addGender(gender){
   return {
@@ -7,8 +7,23 @@ export function addGender(gender){
   }
 }
 
-export function showError(){
+export function showAlert(text){
   return {
-    type: ERROR_FORM
+    type: SHOW_ALERT,
+    payload: text
+  }
+}
+
+export function hideAlert(){
+  return {
+    type: HIDE_ALERT,
+  }
+}
+
+
+export function addPhoto(url){
+  return {
+    type: ADD_PHOTO,
+    payload: url
   }
 }

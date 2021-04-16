@@ -1,8 +1,10 @@
 import React from 'react';
 import classes from './UploadPhoto.module.scss';
 import plus from "../../img/plus.svg";
+import { useDispatch, useSelector } from 'react-redux';
 
-const UploadPhoto = props => {
+const UploadPhoto = () => {
+  const dispatch = useDispatch();
 
   const triggerUploadPhoto = () => document.getElementById('uploadPhoto').click();
 
@@ -14,7 +16,8 @@ const UploadPhoto = props => {
     }
     reader.onload = event => {
       const src = event.target.result; // закодированная картинка
-      props.uploadPhoto(src);
+      console.log(src)
+      // props.uploadPhoto(src);
     }
     reader.readAsDataURL(file); // считать данные как base64-кодированный URL
   }
