@@ -1,4 +1,4 @@
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS, ADD_SOFA_PROPERTYS } from "./actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS, ADD_SOFA_PROPERTYS, AUTH_VK, AUTH_FB } from "./actionTypes";
 
 export function addGender(gender){
   return {
@@ -44,5 +44,19 @@ export function addSofaPropertys(propertys){
   return {
     type: ADD_SOFA_PROPERTYS,
     payload: propertys
+  }
+}
+
+export function authVKImg(payload){
+  return {
+    type: AUTH_VK,
+    payload
+  }
+}
+
+export function authFBImg(payload){
+  return {
+    type: AUTH_FB,
+    payload
   }
 }

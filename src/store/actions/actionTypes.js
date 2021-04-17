@@ -5,3 +5,5 @@ export const SAVE_PHOTO = 'SAVE_PHOTO';
 export const NEXT_PAGE_FORM = 'NEXT_PAGE_FORM';
 export const ADD_INTERESTS = 'ADD_INTERESTS';
 export const ADD_SOFA_PROPERTYS = 'ADD_SOFA_PROPERTYS';
+export const AUTH_VK = 'AUTH_VK';
+export const AUTH_FB = 'AUTH_FB';

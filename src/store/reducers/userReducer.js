@@ -1,5 +1,5 @@
 
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS, ADD_SOFA_PROPERTYS } from "../actions/actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS, ADD_SOFA_PROPERTYS, AUTH_VK, AUTH_FB } from "../actions/actionTypes";
 
 const initialState = {
   gender: null,
@@ -8,6 +8,8 @@ const initialState = {
   alertText: null,
   activePageForm: 0,
   showButtonSavePhoto: false,
+  showButtonVK: false,
+  showButtonFB: false,
   form: [
     {
       title: 'твои данные',
@@ -52,6 +54,10 @@ export default function userReducer( state = initialState, action) {
       return {...state, interests: action.payload};
     case ADD_SOFA_PROPERTYS: 
       return {...state, sofaPropertys: action.payload};
+    case AUTH_VK:
+      return {...state, photo: action.payload, showButtonVK: true, showButtonFB: false };
+    case AUTH_FB:
+      return {...state, photo: action.payload, showButtonFB: true, showButtonVK: false };
     default: return state;
   }
 }

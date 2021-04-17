@@ -1,49 +1,45 @@
-import { takeEvery, call, put } from "redux-saga/effects";
-// import { showAlert } from "../actions/actionsUser";
+// import { takeEvery, call, put } from "redux-saga/effects";
+// import { AUTH_VK } from "../actions/actionTypes";
 
 export function* sagaWatcher(){
+//   yield takeEvery(AUTH_VK, workerAuthVK)
 }
 
-// function* workerFileRead(data){
-//   // try {
-//   //   // const payload = yield call(fileRead, data.payload);
-//   //   // yield console.log(payload);
+// function* workerAuthVK(){
+//     yield VK.init({
+//       apiId: 7804077
+//     });
+//     let photo;
+//     let error;
+//     yield VK.Auth.login((response)=>{
+//       if (response.session) { /* Пользователь успешно авторизовался */
+//         VK.Api.call('users.get', {
+//           user_ids: response.session.user.id,
+//           fields: 'photo_max',
+//           v:"5.73"},
+//           function(r) {
+//             photo =r.response[0].photo_max; // фото
+//           });
+//       } else {
 
-//   //   // yield put({ type: UPLOAD_PHOTO, payload })
-//   // }
-//   // catch (e) {
-//   //   console.log('jib,rf',e)
-//   //   yield put(showAlert('Ошибка с загрузкой фото'))
-//   // }
+//       }
+//     }, VK.access.PHOTOS)
+//     yield console.log(photo)
 // }
 
+    // VK.init({
+    //   apiId: 7804077
+    // });
+    // VK.Auth.login((response)=>{
+    //   if (response.session) { /* Пользователь успешно авторизовался */
+    //     VK.Api.call('users.get', {
+    //       user_ids: response.session.user.id,
+    //       fields: 'photo_max',
+    //       v:"5.73"},
+    //       function(r) {
+    //         console.log(r.response[0].photo_max); // фото
+    //       });
+    //   } else {
 
-// function fileRead(event){
-//   const file = event.target.files[0];
-//   const reader = new FileReader();
-//   if (!event.target.files || !file.type.match('image')) {
-//     return;
-//   }
-//   reader.onload = event => {
-//     const img = new Image();
-//     img.src = event.target.result;
-//     // сохраняем соотношение сторон
-//     // resizes photo
-//     img.onload = () => {
-//       const width = 200;
-//       const scaleFactor = width / img.width;
-//       const elem = document.createElement('canvas');
-//       elem.width = width;
-//       elem.height = img.height * scaleFactor;
-//       const ctx = elem.getContext('2d');
-//       ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
-//       ctx.stroke(); // получаем base64
-//       console.log(elem.toDataURL())
-//       return elem.toDataURL() // возвращаю картинку в base64 шириной 200px
-//     }
-//   }
-//   reader.onerror = function() {
-//     throw new Error();
-//   };
-//   reader.readAsDataURL(file); // считать данные как base64-кодированный URL
-// }
+    //   }
+    // }, VK.access.PHOTOS)

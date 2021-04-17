@@ -1,8 +1,7 @@
+@import "../../assets/variables.scss";
+
 .icons {
   display: flex;
-  .icon:first-of-type{
-    margin-right: 20px;
-  }
 
   &:hover {
     cursor: pointer;
@@ -17,6 +16,22 @@
   height: 60px;
   border-radius: 50%;
   background: #FFFFFF;
+  margin: 0 10px;
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+.iconAttention{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 10px;
+  background: $border-attention;
   img {
     object-fit: contain;
     object-position: center;
