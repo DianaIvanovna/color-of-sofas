@@ -113,10 +113,10 @@
 }
 .pageNumber {
   position: absolute;
-  top: 0px;
-  left: 50%;
-  transform: translate(-50% -50%);
+  top: 0;
+  left: 0;
   margin: 0;
+  width: 100%;
 
   @include fontValueMontserrat(normal, 999, 22px, 26px);
   text-align: center;

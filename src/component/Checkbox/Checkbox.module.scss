@@ -1,0 +1,75 @@
+@import "../../assets/variables.scss";
+
+.form{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 60px;
+  @media screen and (max-width: 650px) {
+    margin-top: 30px;
+  }
+}
+
+.checkboxButton {
+	display: inline-block;
+	margin: 0 15px 30px;
+	user-select: none;
+	position: relative;
+
+  @media screen and (max-width: 650px) {
+    margin: 0 5px 12px;
+  }
+}
+
+.checkboxButton input[type=checkbox] {
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+
+.checkboxButton span {
+	display: inline-block;
+	cursor: pointer;
+	padding: 20px 30px;
+  background: #FFFFFF;
+	border-radius: 70px;
+  border: 2px solid transparent;
+
+  @include fontValueMontserrat(normal, normal, 18px, 22px);
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: $text-color;
+  transition: border-color 0.5s linear;
+
+  &:hover {
+    border: 2px solid #CF78ED;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in;
+  }
+
+  @media screen and (max-width: 650px) {
+    @include fontValueMontserrat(normal, normal, 12px, 15px);
+
+    padding: 12px 11px;
+  }
+}
+
+/* Checked */
+.checkboxButton input[type=checkbox]:checked + span {
+  border: 2px solid #CF78ED;
+
+}
+
+
+/* Disabled */
+.checkboxButton input[type=checkbox]:disabled + span {
+	background: rgba(102, 102, 102, 0.2);
+	cursor: default;
+}
+.checkboxButton input[type=checkbox]:checked:disabled + span {
+	background: #f7efdc;
+}

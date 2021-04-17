@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { addGender, showAlert, hideAlert } from "../../store/actions/actionsUser";
 // component
 import YourData from "../../component/yourData/yourData";
+import Checkbox from "../../component/Checkbox/Checkbox";
+// images
 import {  backgroundSofa, backgroundSofa2, backgroundSofa3, backgroundHead,} from "../../assets/images";
 
 class Settings extends Component {
@@ -45,51 +47,8 @@ class Settings extends Component {
           <p className={classes.subtitle} dangerouslySetInnerHTML={this.updateSubtitle()}>
           </p>
         </div>
-
-        {this.props.activePageForm ===0?<YourData/>:null}
-
-        {/* форма для 1 страницы */}
-        {/* <div className={classes.settings__container}  >
-          <form className={classes.form} onSubmit={this.submitHandler} id="userForm">
-            <div className={classes.input}>
-              <img className={classes.form__image} src={imageMan} alt="icon man" width={76} height={115}></img>
-              <input className={classes.radioButton} name="gender" type="radio" value="man" id="radioMan"/>
-              <label htmlFor="radioMan">Мужчина</label>
-            </div>
-            <div className={classes.input}>
-              <input className={classes.radioButton}name="gender" type="radio" value="woman" id ="radioWoman"/>
-              <label htmlFor="radioWoman">Женщина</label>
-              <img className={classes.form__image} src={imageGirl} alt="icon girl" width={76} height={115}></img>
-            </div>
-          </form>
-          <h2 className={classes.caption}>
-            <img src={backTitle} alt="фон" className={classes.caption__back} width={200} height={70}></img>
-            а также
-          </h2>
-          <p className={classes.text}>Это необязательно для заполнения, но представь
-          как классно твоё фото будет смотреться рядом с диваном</p>
-          <p className={classes.alert}>{this.props.alertText}</p>
-          <div className={classes.download}>
-            <div className={classes.download__item}>
-              <p className={classes.download__title}>Авторизуйся</p>
-              <AuthSocialNetwork/>
-            </div>
-            <p className={classes.download__text}>или</p>
-            <UploadPhoto/>
-          </div>
-          <button
-            className={classes.button}
-            type="submit"
-            onClick={this.submitHandler}
-          >
-            <span>Найти свой диван</span>
-          </button>
-
-          <div className={classes.input__checkbox}>
-            <input type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm" defaultChecked></input>
-            <label htmlFor="agreeInput" className={classes.input__agree}>Я согласен с пользовательским соглашением и с обработкой персональной данных </label>
-          </div>
-        </div> */}
+        {/* контент */}
+        {this.props.activePageForm ===0?<YourData/>:<Checkbox/>}
       </section>
     )
   };
