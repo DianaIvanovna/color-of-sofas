@@ -1,51 +1,98 @@
 import React from 'react-redux';
+import { Component } from 'react';
+import { connect } from 'react-redux';
 import classes from './Checkbox.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import {addInterests} from "../../store/actions/actionsUser";
 
-const Checkbox = () => {
-  const dispatch = useDispatch();
-  const gender = useSelector(state => state.user.gender);
-  const interestsMen = useSelector(state => state.user.form[1].interestsMen);
-  const interestsWomen = useSelector(state => state.user.form[1].interestsWomen);
-  let viewArr = [];
-  if (gender === 'man') viewArr = interestsMen;
-  else viewArr = interestsWomen;
+class Checkbox extends Component {
 
-  const checkboxLimit = (event) =>{
+  button;
+  checkedInputs=0;
+
+  componentDidMount(){
+    this.button = document.querySelector(`.${classes.button}`);
+    this.button.setAttribute('disabled', 'disabled')
+  }
+
+  checkboxLimit = (event) =>{
     if (event.target.type === 'checkbox'){
-      console.log(document.forms.interestForm.elements.interest)
-      let inputs = document.forms.interestForm.elements.interest;
-      let checkedInput = 0;
-      inputs.forEach((input)=> {
-        if (input.checked === true) checkedInput++;
-        input.disabled = false;
-      });
-      if (checkedInput === 3){
-        inputs.forEach((input)=> {
+      this.button.setAttribute('disabled', 'disabled');
+      if (event.target.checked === true) this.checkedInputs++;
+      else {
+        this.checkedInputs--;
+        document.forms.interestForm.elements.interest.forEach((input)=> {
+          input.disabled = false;
+        });
+      }
+      if (this.checkedInputs === 3){
+        this.button.removeAttribute('disabled');
+        document.forms.interestForm.elements.interest.forEach((input)=> {
           if (input.checked !== true) input.disabled = true
         });
       }
     }
   }
 
-  return(
-    <div className="">
-      <form className={classes.form} onClick={checkboxLimit} id="interestForm">
+  buttonHandler = () => {
+    const interests = [];
+    document.forms.interestForm.elements.interest.forEach((input)=> {
+      if (input.checked) interests.push(input.value);
+    });
+    this.props.addInterests(interests)
+    // следующая страница
+  }
 
-        {
-          viewArr.map((checkbox, index) => {
-            return (
-              <label className={classes.checkboxButton} key={index}>
-                <input type="checkbox" name="interest"/>
-                <span>{checkbox}</span>
-              </label>
-            )
-          })
-        }
-
-      </form>
-    </div>
-  )
+  render(){
+    return(
+      <div className={classes.checkbox__container}>
+        <form className={classes.form} onClick={this.checkboxLimit} id="interestForm">
+  
+          {
+            this.props.gender ==='man'? 
+              this.props.interestsMen.map((checkbox, index) => {
+                return (
+                  <label className={classes.checkboxButton} key={index}>
+                    <input type="checkbox" name="interest" value={checkbox}/>
+                    <span>{checkbox}</span>
+                  </label>
+                )
+              })
+            : this.props.interestsWomen.map((checkbox, index) => {
+              return (
+                <label className={classes.checkboxButton} key={index}>
+                  <input type="checkbox" name="interest" value={checkbox}/>
+                  <span>{checkbox}</span>
+                </label>
+              )
+            })
+          }
+  
+        </form>
+  
+        <button
+          className={classes.button}
+          type="submit"
+          onClick = {this.buttonHandler.bind(this)}
+        >
+          <span>{this.props.buttonText}</span>
+        </button>
+  
+      </div>
+    )
+  }
 }
 
-export default Checkbox;
+const mapStateToProps = state => {
+  return {
+    gender: state.user.gender,
+    interestsWomen: state.user.form[1].interestsWomen,
+    interestsMen: state.user.form[1].interestsMen,
+    buttonText: state.user.form[1].buttonText,
+  }
+}
+
+const mapDispatchToProps = {
+  addInterests,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkbox);

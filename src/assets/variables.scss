@@ -86,3 +86,39 @@ $attention: #CF78ED;
     max-width: 278px;
   }
 }
+
+@mixin buttonAttention {
+  @include fontDrukCy(18px, 20px);
+
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 54px;
+  border: none;
+  border-radius: 100px;
+  box-sizing: border-box;
+
+  background: $attention;
+
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+
+  &:disabled {
+    span {
+      opacity: 0.4;
+    }
+    &:hover {
+      cursor: auto;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    @include fontDrukCy(14px, 16px);
+    padding: 23px 26px;
+    max-width: 278px;
+  }
+}

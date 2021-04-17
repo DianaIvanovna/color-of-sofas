@@ -28,7 +28,7 @@ const YourData = () => {
 
   return (
     <div className={classes.settings__container}  >
-      <form className={classes.form} onSubmit={submitHandler} id="userForm">
+      <form className={classes.form} id="userForm">
         <div className={classes.input}>
           <img className={classes.form__image} src={imageMan} alt="icon man" width={76} height={115}></img>
           <input className={classes.radioButton} name="gender" type="radio" value="man" id="radioMan"/>

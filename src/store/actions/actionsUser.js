@@ -1,4 +1,4 @@
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM } from "./actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS } from "./actionTypes";
 
 export function addGender(gender){
   return {
@@ -30,5 +30,12 @@ export function savePhoto(url){
   return {
     type: SAVE_PHOTO,
     payload: url
+  }
+}
+
+export function addInterests(interests){
+  return {
+    type: ADD_INTERESTS,
+    payload: interests,
   }
 }

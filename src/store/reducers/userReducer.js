@@ -1,12 +1,12 @@
 
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM } from "../actions/actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS } from "../actions/actionTypes";
 
 const initialState = {
-  gender: 'man',
+  gender: null,
   interests: [],
   sofaPropertys: [],
   alertText: null,
-  activePageForm: 1,
+  activePageForm: 0,
   form: [
     {
       title: 'твои данные',
@@ -20,7 +20,8 @@ const initialState = {
       ],
       interestsMen: [
         'Бизнес-литература 📚', 'Путешествия  🌴', 'Вкусная еда 🍳', 'Вечеринки 🎉', 'Фотография 📷', 'ЗОЖ 🍏', 'Мемы с котиками 😻', 'Наука 🔭', 'Машины 🚗', 'YouTube и подкасты ', 'Техника 🛠', 'Футбол ⚽'
-      ]
+      ],
+      buttonText: 'продолжить',
     }
   ],
   photo: null
@@ -37,7 +38,9 @@ export default function userReducer( state = initialState, action) {
     case SAVE_PHOTO:
       return {...state, photo: action.payload};
     case NEXT_PAGE_FORM: 
-      return {...state, activePageForm: state.activePageForm + 1 }
+      return {...state, activePageForm: state.activePageForm + 1 };
+    case ADD_INTERESTS: 
+      return {...state, interests: action.payload};
     default: return state;
   }
 }
