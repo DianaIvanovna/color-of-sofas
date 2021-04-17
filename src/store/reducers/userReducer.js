@@ -1,12 +1,23 @@
 
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO } from "../actions/actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM } from "../actions/actionTypes";
 
 const initialState = {
   gender: null,
-  photo: null,
   interests: [],
   sofaPropertys: [],
-  alertText: null
+  alertText: null,
+  activePageForm: 0,
+  form: [
+    {
+      title: 'твои данные',
+      subtitle: 'Мы подберём для тебя идеальную пару',
+    },
+    {
+      title: 'твои Интересы',
+      subtitle: 'Расскажи о своих интересах.<br>Выбери три критерия:',
+    }
+  ],
+  photo: null
 }
 
 export default function userReducer( state = initialState, action) {
@@ -19,6 +30,8 @@ export default function userReducer( state = initialState, action) {
         return {...state, alertText: null};
     case SAVE_PHOTO:
       return {...state, photo: action.payload};
+    case NEXT_PAGE_FORM: 
+      return {...state, activePageForm: state.activePageForm + 1 }
     default: return state;
   }
 }

@@ -1,4 +1,4 @@
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO } from "./actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM } from "./actionTypes";
 
 export function addGender(gender){
   return {
@@ -17,6 +17,12 @@ export function showAlert(text){
 export function hideAlert(){
   return {
     type: HIDE_ALERT,
+  }
+}
+
+export function nextPageForm(){
+  return {
+    type: NEXT_PAGE_FORM,
   }
 }
 

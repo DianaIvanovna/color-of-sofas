@@ -1,0 +1,334 @@
+@import "../../assets/variables.scss";
+
+.settings__container {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  max-width: 1020px;
+  display:flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 20px 35px;
+
+  @media screen and (max-width:650px){
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.form__image{
+  object-fit: contain;
+  margin: 0 20px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width:650px){
+    width: max-content;
+
+    &:first-of-type{
+      .form__image {
+        order: 3;
+      }
+    }
+  }
+}
+
+.input__agree {
+  @include fontValueMontserrat(normal, normal, 14px, 17px);
+  color: $text-color;
+  opacity: 0.6;
+}
+
+
+// СТИЛИ ДЛЯ РАДИОКНОПКИ
+.radioButton {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	margin: 10px 0 0 7px;
+}
+
+.radioButton + label {
+	position: relative;
+	padding: 0 0 0 62px;
+	cursor: pointer;
+  @media screen and (max-width:650px){
+    padding: 0 0 0 44px;
+  }
+}
+.radioButton + label:before {
+	content: '';
+	position: absolute;
+	top: -11px;
+	left: 0;
+	width: 42px;
+	height: 42px;
+	box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+	border-radius: 50%;
+	background: #FFF;
+  @media screen and (max-width:650px){
+    top: -6px;
+    width: 30px;
+    height: 30px;
+  }
+}
+.radioButton + label:after {
+	content: '';
+	position: absolute;
+	top: -3px;
+	left: 8px;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: $border-attention;
+	opacity: 0;
+	transition: .2s;
+  @media screen and (max-width:650px){
+    top: 2px;
+	  left: 8px;
+    width: 14px;
+    height: 14px;
+  }
+}
+.radioButton:checked + label:after {
+	opacity: 1;
+}
+
+// СТИЛИ ЧЕКБОКС
+.input__checkbox {
+  position: relative;
+  margin: 20px 0px;
+  text-align: center;
+
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    margin: 10px 0 0 7px;
+  }
+
+  input + label {
+    position: relative;
+    padding: 0 0 0 28px;
+    cursor: pointer;
+  }
+
+  input:checked + label:before,
+  input:not(:checked) + label:before{
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 18px;
+      height: 18px;
+      border: 2px solid $border-color;
+      background-color: #ffffff;
+      margin-right: 10px;
+      box-sizing: border-box;
+  }
+
+  input:checked + label:before,
+  input:not(:checked) + label:before {
+      border-radius: 4px;
+  }
+
+  input:checked + label:after,
+  input:not(:checked) + label:after {
+      content: "";
+      position: absolute;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+  }
+
+  input:checked + label:after,
+  input:not(:checked) + label:after {
+      left: 3px;
+      top: 4px;
+      width: 10px;
+      height: 5px;
+      border-radius: 1px;
+      border-left: 2px solid $border-color;
+      border-bottom: 2px solid $border-color;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  }
+
+  input:not(:checked) + label:after {
+      opacity: 0;
+  }
+
+  input:checked + label:after {
+      opacity: 1;
+  }
+}
+
+.caption {
+  position: relative;
+  z-index: 2;
+  @include fontDrukCy( 30px, 36px);
+  text-transform: uppercase;
+  color: $text-color;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  &::before, &::after {
+    content: "";
+    vertical-align: middle;
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #CF78ED;
+    position: relative;
+  }
+  &::before {
+      margin-left: -100%;
+      left: -14px;
+      margin-right: 65px;
+  }
+  &::after {
+      margin-right: -100%;
+      right: -14px;
+      margin-left: 65px;
+  }
+
+  @media screen and (max-width:650px){
+    @include fontDrukCy( 22px, 26px);
+    &::before, &::after {
+      display: none;
+    }
+  }
+}
+
+.caption__back {
+  position: absolute;
+  z-index: -1;
+  width: 200px;
+  height: 70px;
+  top: -10px;
+  left: calc(50% - 100px);
+
+  @media screen and (max-width:650px){
+    top: -70%;
+  }
+}
+
+.text {
+  @include fontValueMontserrat(normal, 300, 22px, 30px);
+
+  text-align: center;
+  color: #1E1E1E;
+  margin: 40px 0;
+
+  @media screen and (max-width:650px){
+    @include fontValueMontserrat(normal, 300, 16px, 22px);
+
+    margin: 30px 0;
+  }
+}
+
+.download {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-bottom: 40px;
+
+  @media screen and (max-width:650px){
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+  }
+}
+
+.download__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (max-width:650px){
+    margin-bottom: 20px;
+  }
+}
+
+.download__title{
+  @include fontDrukCy( 22px, 26px);
+  text-align: center;
+  color: $text-color;
+  margin: 0;
+  margin-bottom: 25px;
+
+  @media screen and (max-width:650px){
+    @include fontDrukCy( 18px, 22px);
+    margin-bottom: 17px;
+  }
+
+}
+
+.download__text {
+  @include fontValueMontserrat(normal, 300, 22px, 30px);
+  text-align: center;
+  color: $text-color;
+  margin: 0;
+
+  @media screen and (max-width:650px){
+    @include fontValueMontserrat(normal, 300, 16px, 22px);
+
+    margin-bottom: 20px;
+  }
+}
+
+.button {
+  @include button;
+
+  border: none;
+  background: $attention;
+  color: #FFFFFF;
+
+  &:disabled {
+    span {
+      opacity: 0.4;
+    }
+    &:hover {
+      cursor: auto;
+    }
+  }
+}
+
+.input__error {
+  @include fontValueMontserrat(normal, 300, 16px, 18px);
+
+  text-align: center;
+  color: red;
+  margin: 0 0 20px;
+
+  @media screen and (max-width:650px){
+    margin: 0;
+  }
+}
+
+.alert {
+  @include fontValueMontserrat(normal, 300, 16px, 18px);
+  margin: 20px 0;
+  color: $text-color-attention;
+}

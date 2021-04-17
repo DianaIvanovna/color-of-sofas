@@ -4,26 +4,17 @@ import classes from './settings.module.scss';
 import { connect } from 'react-redux';
 import { addGender, showAlert, hideAlert } from "../../store/actions/actionsUser";
 // component
-import UploadPhoto from "../../component/UploadPhoto/UploadPhoto";
-import AuthSocialNetwork from "../../component/authSocialNetwork/AuthSocialNetwork";
-// image
+import YourData from "../../component/yourData/yourData";
 import {  backgroundSofa, backgroundSofa2, backgroundSofa3, backgroundHead,} from "../../assets/images";
-import imageMan from "../../img/settings/man.png";
-import imageGirl from "../../img/settings/girl.png";
-import backTitle from "../../img/settings/back-action.svg";
-
 
 class Settings extends Component {
+  
+  content = this.props.activePageForm ===0?<YourData/>:null;
 
-  submitHandler = (event) => {
-    event.preventDefault();
-    if (document.forms.userForm.elements.gender.value) {
-      this.props.addGender(document.forms.userForm.elements.gender.value);
-      this.props.hideAlert();
-      // переход на след страницу
-    } else {
-      this.props.showAlert('*Выбор пола обязателен');
-    }
+  updateSubtitle(){
+    return {
+      __html: this.props.form[this.props.activePageForm].subtitle
+    };
   }
 
   render(){
@@ -43,10 +34,22 @@ class Settings extends Component {
     return(
       <section className={classes.settings}>
         {/* картинки для фона */ window.innerWidth > 1040?backgroundImg:null }
-        <div className={classes.settings__container}>
-          <h1 className={classes.title}>твои данные</h1>
-          <p className={classes.subtitle}>Мы подберём для тебя идеальную пару</p>
 
+        {/* номер страницы */}
+        <p className={classes.pageNumber}>
+          <span>{this.props.activePageForm+1}</span> / {this.props.form.length}
+        </p>
+        {/* заголовок */}
+        <div className={classes.title__container}>
+          <h1 className={classes.title}>{this.props.form[this.props.activePageForm].title}</h1>
+          <p className={classes.subtitle} dangerouslySetInnerHTML={this.updateSubtitle()}>
+          </p>
+        </div>
+
+        {this.props.activePageForm ===0?<YourData/>:null}
+
+        {/* форма для 1 страницы */}
+        {/* <div className={classes.settings__container}  >
           <form className={classes.form} onSubmit={this.submitHandler} id="userForm">
             <div className={classes.input}>
               <img className={classes.form__image} src={imageMan} alt="icon man" width={76} height={115}></img>
@@ -59,7 +62,6 @@ class Settings extends Component {
               <img className={classes.form__image} src={imageGirl} alt="icon girl" width={76} height={115}></img>
             </div>
           </form>
-
           <h2 className={classes.caption}>
             <img src={backTitle} alt="фон" className={classes.caption__back} width={200} height={70}></img>
             а также
@@ -87,7 +89,7 @@ class Settings extends Component {
             <input type="checkbox" id="agreeInput" name="agreeInput" value="false" form="userForm" defaultChecked></input>
             <label htmlFor="agreeInput" className={classes.input__agree}>Я согласен с пользовательским соглашением и с обработкой персональной данных </label>
           </div>
-        </div>
+        </div> */}
       </section>
     )
   };
@@ -101,6 +103,8 @@ const mapStateToProps = state => {
     sofaPropertys: state.user.sofaPropertys,
     formInvalid: state.user.formInvalid,
     alertText: state.user.alertText,
+    activePageForm: state.user.activePageForm,
+    form: state.user.form,
   }
 }
 
