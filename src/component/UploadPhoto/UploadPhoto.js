@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './UploadPhoto.module.scss';
 import plus from "../../img/plus.svg";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux'; // отправлять экшены
+import { savePhoto, showAlert } from "../../store/actions/actionsUser";
 
 const UploadPhoto = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,25 @@ const UploadPhoto = () => {
       return;
     }
     reader.onload = event => {
-      const src = event.target.result; // закодированная картинка
-      console.log(src)
-      // props.uploadPhoto(src);
+      const img = new Image();
+      img.src = event.target.result;
+      // сохраняем соотношение сторон
+      img.onload = () => { // resizes photo
+        const width = 200;
+        const scaleFactor = width / img.width;
+        const elem = document.createElement('canvas');
+        elem.width = width;
+        elem.height = img.height * scaleFactor;
+        const ctx = elem.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
+        ctx.stroke(); // получаем base64
+        dispatch(savePhoto(elem.toDataURL()))// возвращаю картинку в base64 шириной 200px
+        dispatch(showAlert('Фото загружено'));
+      }
     }
+    reader.onerror = function() {
+      dispatch(showAlert('Фото не загрузилось'));
+    };
     reader.readAsDataURL(file); // считать данные как base64-кодированный URL
   }
 

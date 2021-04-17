@@ -1,4 +1,4 @@
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, ADD_PHOTO } from "./actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO } from "./actionTypes";
 
 export function addGender(gender){
   return {
@@ -20,10 +20,9 @@ export function hideAlert(){
   }
 }
 
-
-export function addPhoto(url){
+export function savePhoto(url){
   return {
-    type: ADD_PHOTO,
+    type: SAVE_PHOTO,
     payload: url
   }
 }

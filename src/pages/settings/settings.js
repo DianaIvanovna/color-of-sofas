@@ -15,16 +15,6 @@ import backTitle from "../../img/settings/back-action.svg";
 
 class Settings extends Component {
 
-  addPhoto = (src)=>{
-    // ДОБАВЬ REDUCE ПО ДОБАВЛЕНИЮ ФОТО
-    // this.setState({
-    //   user: {
-    //     photo: {src}
-    //   }
-    // })
-    // console.log(this.state.user.photo);
-  }
-
   submitHandler = (event) => {
     event.preventDefault();
     if (document.forms.userForm.elements.gender.value) {

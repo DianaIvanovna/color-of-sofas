@@ -1,5 +1,5 @@
 
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, ADD_PHOTO } from "../actions/actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO } from "../actions/actionTypes";
 
 const initialState = {
   gender: null,
@@ -17,8 +17,8 @@ export default function userReducer( state = initialState, action) {
       return {...state, alertText: action.payload};
     case HIDE_ALERT:
         return {...state, alertText: null};
-    case ADD_PHOTO:
-      return {...state, photo: action.payload}
+    case SAVE_PHOTO:
+      return {...state, photo: action.payload};
     default: return state;
   }
 }
