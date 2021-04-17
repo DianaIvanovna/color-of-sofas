@@ -21,12 +21,6 @@ const YourData = () => {
       dispatch((addGender(document.forms.userForm.elements.gender.value)));
       dispatch(hideAlert());
       dispatch(nextPageForm());
-
-      // this.props.addGender(document.forms.userForm.elements.gender.value);
-      // this.props.hideAlert();
-      // // переход на след страницу
-      // this.activePage++;
-
     } else {
       dispatch(showAlert('*Выбор пола обязателен'))
     }
