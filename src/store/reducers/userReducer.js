@@ -1,5 +1,5 @@
 
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS } from "../actions/actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS, ADD_SOFA_PROPERTYS } from "../actions/actionTypes";
 
 const initialState = {
   gender: null,
@@ -22,6 +22,14 @@ const initialState = {
         'Бизнес-литература 📚', 'Путешествия  🌴', 'Вкусная еда 🍳', 'Вечеринки 🎉', 'Фотография 📷', 'ЗОЖ 🍏', 'Мемы с котиками 😻', 'Наука 🔭', 'Машины 🚗', 'YouTube и подкасты ', 'Техника 🛠', 'Футбол ⚽'
       ],
       buttonText: 'продолжить',
+    },
+    {
+      title: 'твой диван',
+      subtitle: 'Что ты ждёшь от идеального дивана.<br> Выбери три критерия:',
+      sofaPropertys: [
+        'Лёгкая сборка 🛠', 'Комфорт 😌', 'Долговечность ⌛', 'Практичность 🙌', 'Универсальность ✔', 'Экологичность 🌱', 'Гарантия качества 🥇 ', 'Надежный производитель 🏆', 'Доступная цена 💰', 'Лёгкая чистка ✨', 'Приятные материалы 😍', 'Повышенная прочность 💪', 'Эксклюзивность 🔥', 'Умные механизмы 💡', 'Простота раскладывания 👌'
+      ],
+      buttonText: 'найти свою любовь'
     }
   ],
   photo: null
@@ -41,6 +49,8 @@ export default function userReducer( state = initialState, action) {
       return {...state, activePageForm: state.activePageForm + 1 };
     case ADD_INTERESTS: 
       return {...state, interests: action.payload};
+    case ADD_SOFA_PROPERTYS: 
+      return {...state, sofaPropertys: action.payload};
     default: return state;
   }
 }

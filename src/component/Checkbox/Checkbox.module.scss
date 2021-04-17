@@ -28,6 +28,7 @@
   @include buttonAttention;
   margin-top: 60px;
   margin-bottom: 40px;
+  max-width: 450px;
 
   @media screen and (max-width: 650px) {
     margin: 20px 0 30px;

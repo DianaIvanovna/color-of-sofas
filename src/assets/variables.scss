@@ -102,7 +102,9 @@ $attention: #CF78ED;
   text-align: center;
   text-transform: uppercase;
   color: #fff;
-
+  &:hover {
+    cursor: pointer;
+  }
   &:disabled {
     span {
       opacity: 0.4;

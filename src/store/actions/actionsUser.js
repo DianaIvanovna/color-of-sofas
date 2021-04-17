@@ -1,4 +1,4 @@
-import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS } from "./actionTypes";
+import { ADD_GENDER, SHOW_ALERT, HIDE_ALERT, SAVE_PHOTO, NEXT_PAGE_FORM, ADD_INTERESTS, ADD_SOFA_PROPERTYS } from "./actionTypes";
 
 export function addGender(gender){
   return {
@@ -37,5 +37,12 @@ export function addInterests(interests){
   return {
     type: ADD_INTERESTS,
     payload: interests,
+  }
+}
+
+export function addSofaPropertys(propertys){
+  return {
+    type: ADD_SOFA_PROPERTYS,
+    payload: propertys
   }
 }
