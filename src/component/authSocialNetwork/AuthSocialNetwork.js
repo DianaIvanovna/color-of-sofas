@@ -8,14 +8,12 @@ import fb from "../../img/fb.svg";
 const AuthSocialNetwork = props => {
   // функция загрузки фото с вк
   const authVk = () => {
-    // eslint-disable-next-line no-undef
+
     VK.init({
       apiId: 7804077
     });
-    // eslint-disable-next-line no-undef
     VK.Auth.login((response)=>{
       if (response.session) { /* Пользователь успешно авторизовался */
-        // eslint-disable-next-line no-undef
         VK.Api.call('users.get', {
           user_ids: response.session.user.id,
           fields: 'photo_max',
@@ -26,12 +24,10 @@ const AuthSocialNetwork = props => {
       } else {
 
       }
-      // eslint-disable-next-line no-undef
     }, VK.access.PHOTOS)
   }
 
   const authFB = ()=>{
-  // eslint-disable-next-line no-undef
   FB.init({
     appId            : '202220517908280',
     autoLogAppEvents : true,
@@ -39,10 +35,9 @@ const AuthSocialNetwork = props => {
     version          : 'v10.0'
   });
 
-  // eslint-disable-next-line no-undef
   FB.login(function(response) {
     if (response.status === 'connected') { //Logged into your webpage and Facebook.
-      // eslint-disable-next-line no-undef
+
       FB.api(
         `/me/picture?redirect=false`,
         'GET',

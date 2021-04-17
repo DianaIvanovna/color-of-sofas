@@ -7,6 +7,7 @@ const initialState = {
   sofaPropertys: [],
   alertText: null,
   activePageForm: 0,
+  showButtonSavePhoto: false,
   form: [
     {
       title: 'твои данные',
@@ -44,7 +45,7 @@ export default function userReducer( state = initialState, action) {
     case HIDE_ALERT:
         return {...state, alertText: null};
     case SAVE_PHOTO:
-      return {...state, photo: action.payload};
+      return {...state, photo: action.payload, showButtonSavePhoto: true};
     case NEXT_PAGE_FORM: 
       return {...state, activePageForm: state.activePageForm + 1 };
     case ADD_INTERESTS: 

@@ -1,15 +1,18 @@
 import React from 'react';
 import classes from './UploadPhoto.module.scss';
 import plus from "../../img/plus.svg";
-import { useDispatch } from 'react-redux'; // отправлять экшены
+import iconCheck from "../../img/icon-check.svg"
+import { useDispatch, useSelector } from 'react-redux'; // отправлять экшены
 import { savePhoto, showAlert } from "../../store/actions/actionsUser";
 
 const UploadPhoto = () => {
   const dispatch = useDispatch();
+  const flagButton = useSelector((store)=>store.user.showButtonSavePhoto)
 
   const triggerUploadPhoto = () => document.getElementById('uploadPhoto').click();
 
   const uploadPhotoHandler = (event) => {
+    console.log(flagButton)
     const file = event.target.files[0];
     const reader = new FileReader();
     if (!event.target.files || !file.type.match('image')) {
@@ -48,9 +51,15 @@ const UploadPhoto = () => {
         accept=".png, .jpg, .jpeg, webp"
       />
       <p className={classes.title}>Загрузи фото</p>
-      <div className={classes.icon} onClick={triggerUploadPhoto}>
-        <img width={24} height={24} src={plus} alt="icon add"></img>
-      </div>
+      {
+        flagButton === false ? 
+          <div className={classes.icon} onClick={triggerUploadPhoto}>
+            <img width={24} height={24} src={plus} alt="icon add"></img>
+          </div>
+          :<div className={classes.iconAttention}>
+            <img width={24} height={24} src={iconCheck} alt="icon ckeck"></img>
+          </div>
+      }
   </div>
   )
 }

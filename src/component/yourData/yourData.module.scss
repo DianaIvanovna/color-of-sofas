@@ -299,7 +299,7 @@
 }
 
 .button {
-  @include button;
+  @include buttonAttention;
 
   border: none;
   background: $attention;
